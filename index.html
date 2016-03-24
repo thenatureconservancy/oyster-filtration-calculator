@@ -1,0 +1,466 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+    <title>Oyster Filtration Tool</title>
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900,400italic|Fjalla+One' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" media="all">
+    <link rel='stylesheet' href='https://api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox.css' media="all"/> 
+    <link rel="stylesheet" href="css/oyster-app.css" media="all">
+  </head>
+  <body>
+
+<div id="oyster-calculator" class="container">
+  <div class="row">
+  <script id='template' type='text/ractive'>
+    <div class="row">
+      <h1>Oyster Calculator</h1>
+      {{#activeSite.name}}<h2 id="site-name">{{activeSite.name}}, {{activeSite.stateabrev}}</h2>{{/activeSite.name}}
+    </div> <!-- End row -->
+
+      <div id="oyster-attributes" class="row">
+
+        <div id="oyster-inputs" class="col-xs-6">
+          <div id="intro-paragraph" class="row">
+            <p>To use the calculator, first select a bay location from our database. If using your own site, select the closest site within our database to
+              load oyster mass formula and fish benefits data.
+            </p>
+            <button type="button" id="map-button" class="btn btn-primary map-button" data-toggle="modal" data-target="#map-modal">Select site</button>
+            <button type="button" id="map-reset" class="btn btn-default map-button">Reset data</button>
+          </div>
+
+          <div id="bay-properties" class="row">
+            <h2>Bay Properties 
+              <i class="fa fa-question-circle"
+
+              data-toggle="popover"
+              tabindex="0"
+              data-trigger="focus"
+              data-placement="bottom"
+              data-html="true" 
+              data-content="<p><strong>Bay Volume:</strong> Volume of the bay or estuary in question, in cubic meters.  Volumes provided are from a NOAA compilation (<a href='http://yosemite.epa.gov/oa/EAB_Web_Docket.nsf/(Filings)/3BE82A42C7ED8C3585257B120059CB8A/$File/Opposition%20to%20Petition%20for%20Review%20--%20Ex.%2010%20Part1...23.53.pdf' target='_blank'>Bricker et al. 2007</a>).</p>
+                <p><strong>Residence time:</strong> Average length of time that a parcel of water will remain in an estuary considering the tidal exchange, measured in days. </p>
+                <p><strong>Temperature:</strong>  Water temperature has a strong influence on filtration rate. The appropriate seasonal temperature should be used.  Average summer temperature is provided for sample sites.</p>">
+              </i>
+            </h2>
+
+              <div class="col-xs-7">
+                <label for="">Bay Volume </label>
+                  <div class="input-group">
+                    <input min="0" max="9999999999999999" class="form-control" value="{{activeSite.bayvolume_1000m3}}">
+                    <div class="input-group-addon">1000m<sup>3</sup></div>
+                  </div>
+                <label for="">Temperature</label>
+                  <div class="input-group">
+                    <input min="0" max="999" class="form-control" value="{{activeSite.tsummeravg}}">
+                    <div class="input-group-addon">&deg; C</div>
+                  </div>            
+              </div> <!-- End col -->
+
+            <div class="col-xs-5">
+              <label for="">Residence Time</label>
+                <div class="input-group">
+                  <input min="0" max="999999" class="form-control" value="{{activeSite.bayresidencetime_d}}">
+                  <div class="input-group-addon">days</div>
+                </div>
+
+                <label for="">Current Reef Area</label>
+                  <div class="input-group">
+                    <input min="0" max="9999999999999999" class="form-control" value="{{activeSite.currentreefarea_ha}}">
+                    <div class="input-group-addon">ha</div>
+                  </div>
+
+            </div> <!-- End col xs-6 -->
+          </div> <!-- End Bay properties row -->
+
+          <div id="current-oyster-properties" >
+            <div class="row">
+            <h2>Current Oyster Properties 
+              <i class="fa fa-question-circle"
+                data-toggle="popover" 
+                data-placement="right"
+                data-html="true"
+                data-trigger="focus"  
+                data-content="<p>These data are used to determine the filtration provided by oysters that <em>currently</em> exist in the bay or estuary. 
+                If no oysters are present, then these inputs will remain empty.</p>
+                <p><strong>Current Reef Area:</strong>  Area, in hectares, of the oyster reef currently existing in the bay or estuary.</p> 
+                <p><strong>Mean Oyster Length (&lt; or &ge; 76mm):</strong>  Filtration estimates will be more accurate if calculated for size categories. 
+                If data only exists for one average population size, only enter size and density data in one of the size classes. 
+                Leave the other blank.</p> 
+                <p><strong>Mean Oyster Density (&lt; or &ge; 76mm):</strong>  Avg density of oysters per size category (oysters per sq. meter). 
+                If data are only available for one average population density, enter size and density data in one of the size classes 
+                and leave the other blank.</p>">
+              </i>
+            </h2>
+
+            </div>
+            <div class="row">
+              <div class="col-xs-6">
+                <label for="">Mean Oyster Length <br/><span class="small">(&lt; 76mm)</span></label>
+                  <div class="input-group">
+                    <input min="0" max="99999" class="form-control" value="{{activeSite.currentcullmeanlength_mm}}" oninput="if(this.value == '') { this.value = '0'; }">
+                    <div class="input-group-addon">mm</div>
+                  </div>
+              </div>
+              <div class="col-xs-6">
+                <label for="">Mean Oyster Length <br/><span class="small">(&ge; 76mm)</span></label>
+                  <div class="input-group">
+                    <input min="0" max="99999" class="form-control" value="{{activeSite.currentmarketmeanlength_mm}} ">
+                    <div class="input-group-addon">mm</div>
+                  </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6">
+                <label for="">Mean Oyster Density <br/><span class="small">(&lt; 76mm)</span></label>
+                  <div class="input-group">
+                    <input  min="0" max="99999" class="form-control" value="{{activeSite.currentculldensity_ind_m2}}" oninput="if(this.value == '') { this.value = '0'; }" >
+                    <div class="input-group-addon">ind/m<sup>2</sup></div>
+                  </div>  
+              </div>
+              <div class="col-xs-6">
+                <label for="">Mean Oyster Density <br/><span class="small">(&ge; 76mm)</span></label>
+                  <div class="input-group">
+                    <input min="0" max="99999" class="form-control" value="{{activeSite.currentmarketdensity_ind_m2}}">
+                    <div class="input-group-addon">ind/m<sup>2</sup></div>
+                  </div> 
+              </div>
+            </div>
+          </div> <!-- End oyster props row -->
+
+
+          <div id="filtration-goals">         
+            <div class="row">
+              <h2>Goals
+                <i class="fa fa-question-circle"
+                  data-toggle="popover" 
+                  data-placement="top"
+                  data-html="true"
+                  data-trigger="focus"  
+                  data-content="
+                    <p>Data inputs that will be used to calculate the added filtration benefits from restored oyster habitat.</p>
+                    <p><strong>Estuary Filtration Percent: </strong>  Changing this value (by either sliding the bar or entering a percentage) 
+                    will alter the New Reef Habitat Required to achieve the Filtration Goal given the current and goal oyster population characteristics provided. Values greater than 125% need to be entered manually using the input box.</p>
+                    <p><strong>Mean Oyster Length (&lt; or &ge; 76mm):</strong> Expected average size of oysters in restored areas in the size category ((&lt; or &ge; 76mm).  </p> 
+                    <p><strong>Mean Oyster Density (&lt; or &ge; 76mm):</strong>  expected average density of oysters in restored areas in the size category (&lt; or &ge; 76mm).</p>
+                  "
+                ></i>
+              </h2>
+                <div class="col-xs-8">
+                  <div class="input-group oyster-slider">
+                    <label for="filtrationPercent">Estuary Filtration Percent</label>
+                    <input id="filtrationGoal" class="slider" type="range" min="0" max="125" step="1" value="{{goalData.goalfiltrationprcnt}}" list="filterSettings"/>
+                    <datalist id="filterSettings">
+                      <option>0</option>
+                      <option>25</option>
+                      <option>50</option>
+                      <option>75</option>
+                      <option>100</option>
+                      <option>125</option>
+                    </datalist>
+                  </div>
+                </div>
+
+                <div id="oyster-prcnt-box" class="col-xs-4">
+                  <div class="input-group oyster-prcnt">
+                    <input type="text" class="form-control" value="{{goalData.goalfiltrationprcnt}}">
+                    <div class="input-group-addon">%</div>
+                  </div>
+                </div>
+            </div> <!-- End filtration row -->
+
+            <div class="row">
+              <div class="col-xs-6">
+                <label for="">Mean Oyster Length <br/><span class="small">(&lt; 76mm)</span></label>
+                  <div class="input-group">
+                    <input min="0" max="99999" class="form-control" value="{{goalData.goalculllength}}">
+                    <div class="input-group-addon">mm</div>
+                  </div>  
+              </div>
+
+              <div class="col-xs-6">
+                <label for="">Mean Oyster Length <br/><span class="small">(&ge; 76mm)</span></label>
+                  <div class="input-group">
+                    <input min="0" max="99999" class="form-control" value="{{goalData.goalmarketlength}}">
+                    <div class="input-group-addon">mm</div>
+                  </div>
+              </div>
+            </div> <!-- End density row -->
+
+            <div class="row">
+              <div class="col-xs-6">
+                <label for="">Mean Oyster Density <br/><span class="small">(&lt; 76mm)</span></label>
+                  <div class="input-group">
+                    <input min="0" max="99999" class="form-control" value="{{goalData.goalculldensity}}">
+                    <div class="input-group-addon">ind/m<sup>2</sup></div>
+                  </div>  
+              </div>
+
+              <div class="col-xs-6">
+                <label for="">Mean Oyster Density <br/><span class="small">(&ge; 76mm)</span></label>
+                  <div class="input-group">
+                    <input min="0" max="99999" class="form-control" value="{{goalData.goalmarketdensity}}">
+                    <div class="input-group-addon">ind/m<sup>2</sup></div>
+                  </div>
+              </div>
+            </div> <!-- End density row -->
+          </div>  <!-- end filtration-goals -->
+        </div> <!-- End oyster inputs -->
+
+
+        <div class="col-xs-6"> <!-- ###### Right column -->
+          <div class="row">
+          <div class="col-xs-12">
+            <div id="results-summary">
+              <p>An estimated 
+                  <strong>{{format(activeSite.currentfiltration/activeSite.bayfiltervol*100)}}%</strong>
+                of the bay is currently filtered by oysters. 
+
+<!--                 {{#if (goalData.goalmarketlength > 1 || goalData.goalculllength > 1) && (goalData.goalmarketdensity > 0 || goalData.goalculldensity > 0)}} -->
+                To increase the filtration of the bay to 
+                  <strong>{{goalData.goalfiltrationprcnt}}%</strong>
+                will require 
+                  <strong>{{format(goalData.goalfiltration/(10000*((goalData.goalmarketdensity * goalData.goalmarketoneoysterrate)+(goalData.goalculldensity * goalData.goalculloneoysterrate))))}} ha
+                  ({{format(2.47105*goalData.goalfiltration/(10000*((goalData.goalmarketdensity * goalData.goalmarketoneoysterrate)+(goalData.goalculldensity * goalData.goalculloneoysterrate))))}} ac)</strong> 
+                of restored habitat. 
+<!--                 {{/if}} -->
+
+                {{#if goalData.fish && (goalData.goalmarketlength > 1 || goalData.goalculllength > 1) && (goalData.goalmarketdensity > 0 || goalData.goalculldensity > 0)}}This restored habitat could support 
+                  <strong>{{format(sumFishIndiv)}}</strong> young of the year fish per year, which will contribute an estimated <strong>{{format(sumFishBiomass)}} kg</strong> biomass over their lifetime. {{/if}}
+              </p>              
+            </div>
+
+          <ul class="nav nav-tabs">
+            <!-- <li>Explore Restoration Benefits</li> -->
+            <li class="active"><a data-toggle="tab" href="#filtration-outputs">Filtration</a></li>
+            <li><a data-toggle="tab" href="#fish-outputs">Fish Production</a></li>       
+          </ul>
+
+          <div class="tab-content">
+            <div id="filtration-outputs" class="tab-pane active">
+              <div id="outputs" class="row">
+
+                <h2>Estuary Filtration 
+                <i class="fa fa-question-circle"
+                  data-toggle="popover" 
+                  data-placement="auto"
+                  data-html="true"
+                  data-trigger="focus"  
+                  data-content="
+                  <p><strong>Estuary Filter Volume:</strong> Rate of filtration required to achieve full estuary filtration within the residence time. It is calculated by dividing the bay volume by the residence time and converting the output to litres per hour.</p> 
+                  <p><strong>Historic Filtration:</strong>  A reference value of the filtration that would have been provided by the historic oyster habitat where that historic condition of oysters is known (<a href='docs/zuErmgassen.2013.EstuariesCoasts.QuantifyingLossMarineES.pdf' target='_blank'>zu Ermgassen et al. 2013</a>). Historic filtration is not used in calculating current day filtration or restoration goals and is only a historical reference. </p> 
+                  <p><strong>Current Filtration:</strong>  The estimate of the current filtration based on the Current Oyster Properties data provided.  It is displayed as percent filtration of the Estuary Filter Volume in litres per hour.</p>
+
+                  <p><strong>Goal Filtration: </strong> The Estuary Filtration Percent (under Goals) displayed in litres per hour.</p>"              
+                ></i>
+                </h2>
+
+                <div class="col-xs-6">
+                  <svg id="output-viz" width="160" height="240">
+
+                  <defs>
+                      <pattern id="water" width=".25" height="20" patternContentUnits="objectBoundingBox">
+                        <path fill="#fff" d="M0.25,1H0c0,0,0-0.659,0-0.916c0.083-0.303,0.158,0.334,0.25,0C0.25,0.327,0.25,1,0.25,1z"/>
+                      </pattern>
+
+                      <mask id="text-mask">
+                        <use x="0" y="0" xlink:href="#text" opacity="1" fill="#ffffff"/>
+                      </mask>
+                      
+                    </defs>
+                    <rect class="water-fill" width="150" height="200" rx="0" ry="0" y="40" style="fill:rgb(233, 245, 252);stroke-width:1;stroke:rgb(218,235,227)" />
+                    
+                    {{#if (goalData.goalmarketlength > 1 && goalData.goalmarketdensity > 0 ) || (goalData.goalculllength > 1 && goalData.goalculldensity > 0)}}
+                    <rect width="150" height="{{200 * (goalData.goalfiltrationprcnt/100)}}" x="0" y="{{240 - (200 * (goalData.goalfiltrationprcnt/100))}}" style="fill:rgb(188, 216, 231);stroke-width:1;stroke:rgb(218,235,227);fill-opacity: {{goalData.goalfiltrationprcnt/30}};" />
+                    {{/if}}
+
+
+                    {{#if historicFiltrationPrcnt > 1}}
+                        <g fill="none" stroke="rgb(255,133,80)" stroke-width="2">
+                          <path stroke-dasharray="10,10" d="M5 20 l146 0" />
+                        </g>
+                    {{/if}}
+
+                    {{#if historicFiltrationPrcnt <= 1}}
+                        <g fill="none" stroke="rgb(255,133,80)" stroke-width="2">
+                          <path stroke-dasharray="10,10" d="M5 {{240 - (200 * (historicFiltrationPrcnt))}} l146 0" />
+                    {{/if}}                    
+
+
+                    {{#if activeSite.currentfiltration/activeSite.bayfiltervol > 1}}
+                      <line x1="0" x2="150" y1="30" y2="30" style="stroke:rgb(169,68,66);stroke-width:2" />                 
+
+                    {{elseif activeSite.currentfiltration}}
+                      <line x1="0" x2="150" y1="{{240 - (200 * (activeSite.currentfiltration/activeSite.bayfiltervol))}}" y2="{{240 - (200 * (activeSite.currentfiltration/activeSite.bayfiltervol))}}" style="stroke:rgb(169,68,66);stroke-width:2" />  
+                    {{/if}}
+
+                  </svg>
+                </div>
+
+                <div id="output-viz-text" class="col-xs-6">
+
+                    <p><span class="viz-bay viz-label">Estuary filter volume</span> <br/>
+                      {{format(bayFilterVol)}} L/h                                 
+                    </p>
+
+                    {{#historicFiltration}}
+                    <p><span class="viz-historic viz-label">Historic filtration</span><br/>
+                       {{format(historicFiltration)}} L/h ({{format(historicFiltrationPrcnt*100)}}%)              
+                    </p>
+                    {{/historicFiltration}}
+
+                    <p><span class="viz-current viz-label">Current filtration</span><br/>
+                      {{#if (activeSite.currentmarketmeanlength_mm > 1 && activeSite.currentmarketdensity_ind_m2 !== null) || (activeSite.currentcullmeanlength_mm > 1 && activeSite.currentculldensity_ind_m2 !== null)}}
+                        {{format(currentFiltration)}} L/h ({{format(activeSite.currentfiltration/activeSite.bayfiltervol*100)}}%)
+
+                      {{else}}
+                        0 L/h (0%)                      
+                      {{/if}}
+                    </p>
+
+                    {{#if (goalData.goalmarketlength > 1 && goalData.goalmarketdensity ) || (goalData.goalculllength > 1 && goalData.goalculldensity )}}
+                    <p><span class="viz-goal viz-label">Goal filtration</span><br/>
+                        {{format(activeSite.bayfiltervol * ( goalData.goalfiltrationprcnt/100))}} L/h ({{format(goalData.goalfiltrationprcnt)}}%)        
+                    </p>
+                    {{/if}}   
+              
+                </div>
+              </div> <!-- End outputs row -->
+              <hr/>
+              <p class="small">Goal data, including estuary filtration goals and fish production, is not shown until at least one goal oyster length and density is entered.
+              All calculations are estimates only, based on an extensive literature review.</p>
+                {{#activeSite.ecoregion}}<p class="small"><strong>Ecoregion</strong><br/>{{activeSite.ecoregion}}</p>{{/activeSite.ecoregion}}
+                {{#activeSite.length2massequation}}<p class="small"><strong>Oyster mass to Length formula</strong><br/>{{activeSite.length2massreferencefull}}<br/> {{activeSite.length2massequation}}</p>{{/activeSite.length2massequation}}
+                <p class="hide">{{currentFiltration}}</p>
+            </div>
+
+            <div id="fish-outputs" class="tab-pane">
+            <h2>Fish Benefits
+              <i class="fa fa-question-circle"
+                  data-toggle="popover" 
+                  data-placement="auto"
+                  data-html="true"
+                  data-trigger="focus"  
+                  data-content="
+                  <p>Fish production data are from <a href='docs/zuErmgassen.2015.QuantifyingFishProduction.pdf' target='_blank'>zu Ermgassen et al. 2015</a>. Estimates are only available for the Northern Gulf of Mexico and part of the Atlantic coasts (Floridian, Carolinian and Virginian ecoregions).</p> 
+                  <p><strong>Est. Site Abundance:</strong> Select the estimated site abundance (ind./ha) for the bay or estuary you are calculating for. Default is mean abundance for either the Gulf of Mexico or Atlantic coast (where applicable). High abundance is mean +1 SD. If species is not present, or occurs in low abundance, select ‘None’. </p> 
+                  <p><strong># New Individuals:</strong>  Calculated by multiplying site abundance by acres of restored habitat required
+                  to meet filtration goal.</p>
+                  <p><strong>New Biomass: </strong> The per species biomass, per year. Calculated by multiplying site abundance by acres of restored habitat required to meet filtration goal by biomass for each species per ha.</p>"              
+                ></i>
+            </h2>
+              {{#if goalData.fish}}
+                <table class="table table-hover table-condensed">
+                  <thead>
+                    <tr>
+                      <th>Species</th>
+                      <th>Est. Site Abundance</th>
+                      <th># New Indiv</th> 
+                      <th>New Biomass (kg)</th> 
+                    </tr>
+                  </thead>
+                           
+                  <tbody>
+                    {{#goalData.fish:i}}
+                      <tr>
+                        <td title="{{species}}">{{commonName}}</td>
+
+                        <td>                        
+                          <input id="filtrationGoal" class="slider-fish" type="range" min="0" max="2" step="1" value="{{abundanceWeight}}" list="fishSettings" /> 
+                          <datalist id="fishSettings">
+                            <option>0</option>
+                            <option>1</option>
+                            <option>2</option>
+                          </datalist>
+                          <span class="small">
+                            {{#if abundanceWeight === 0}}None: 0/ha
+                              {{elseif abundanceWeight === 1}}Avg: {{Math.round(juvMeanHa)}}/ha
+                              {{elseif abundanceWeight === 2}}High: {{Math.round(juvMeanHa+(juvStDevAcre/0.404686))}}/ha
+                            {{/if}}
+                          </span>                                                             
+                        </td>
+
+                        <td>
+                          {{#if abundanceWeight === 0}} 0
+                            {{elseif abundanceWeight === 1}} {{format( (juvMeanHa * goalData.goalfiltration)/(10000*((goalData.goalmarketdensity * goalData.goalmarketoneoysterrate)+(goalData.goalculldensity * goalData.goalculloneoysterrate))))}}
+                            {{elseif abundanceWeight === 2}} {{format( ((juvMeanHa + (juvStDevAcre/0.404686)) * goalData.goalfiltration)/(10000*((goalData.goalmarketdensity * goalData.goalmarketoneoysterrate)+(goalData.goalculldensity * goalData.goalculloneoysterrate))))}}
+                          {{/if}}                          
+                        </td>
+
+
+                        <td>
+                          {{#if abundanceWeight === 0}} 0
+                            {{elseif abundanceWeight === 1}} {{format( (meanProductionKgHa * goalData.goalfiltration)/(10000*((goalData.goalmarketdensity * goalData.goalmarketoneoysterrate)+(goalData.goalculldensity * goalData.goalculloneoysterrate))))}}
+                            {{elseif abundanceWeight === 2}} {{format( ((meanProductionKgHa + (stDevProductionKgAcre/0.404686))* goalData.goalfiltration)/(10000*((goalData.goalmarketdensity * goalData.goalmarketoneoysterrate)+(goalData.goalculldensity * goalData.goalculloneoysterrate))))}}
+                          {{/if}}
+
+                        
+                        </td>
+                      </tr> 
+
+                    {{/goalData.fish}}                  
+                  </tbody>
+                </table>
+
+              {{else}}
+                <p class="fish-warning">Fish production data are only available for the Northern Gulf of Mexico, Floridian, Carolinian , and Virginian ecoregions.</p>
+                <img src="ecoregions300c.jpg" class="img-responsive"/>
+              {{/if}}
+
+            </div> <!-- End fish-outputs -->
+          </div>
+
+          </div> <!-- End col-xs-12 -->
+        </div> <!-- End row -->
+
+
+        </div> <!-- end right col-xs-6 -->
+
+  </script> 
+  </div> <!-- End calculator row -->
+ 
+</div> <!-- End oyster calculator container -->
+
+
+<!-- <!-- Map modal for selecting data -->
+<div id="map-modal" class="modal fade bs-example-modal-md" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog modal-md">   
+    <div class="modal-content">
+      <div id="map">
+        <div class="instructions">
+          <h2>Map Instructions</h2>
+          <p>Select a bay location from our database. If using your own site, select the closest site within our database to
+            load oyster mass formula and fish benefits data.</p>
+
+              <label class="radio-inline">
+                <input type="radio" name="siteType" id="existing" value="existing" checked />
+                Existing Site
+              </label>
+
+              <label class="radio-inline">
+                <input type="radio" name="siteType" id="custom" value="custom" />
+                Custom Site
+              </label>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 
+
+
+    <script src='lib/iframeResizer.contentWindow.min.js'></script>  
+    <script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox.js'></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> 
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script src='lib/ractive.min.js'></script>  
+    <script type="text/javascript" src="js/config.js"></script> 
+    <script type="text/javascript" src="js/oyster-app.js"></script>
+  </body>
+</html>

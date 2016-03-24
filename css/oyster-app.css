@@ -1,0 +1,109 @@
+/* 
+body text 		rgb( 64, 93, 104)
+Headers				rgb(20, 49, 84)
+lime green		#8dc557
+
+
+*/
+
+/* General properties */
+html, body {height: 100%;}
+body {margin:0; padding:0; font-family: Lato, Helvetica, sans-serif; font-weight: normal;}
+h1 {font-family: 'Fjalla One', sans-serif; display: inline; float: left; margin: 10px 100px 0 15px; padding: 0;}
+h2 {font-size: 24px; margin-left: 10px; margin-top: 10px; margin-bottom: 0; font-family: 'Fjalla One',sans-serif;
+		color: rgb(20, 49, 84); text-transform: uppercase; /*background: #f1f1f1; */padding: 5px;
+    }
+a {color: #8dc557;}
+.small {font-size: .8em;}
+.fa-question-circle {color: #C8C8C8; font-size: .8em; margin-bottom: 3px;}
+.fa-question-circle:hover {color: #8dc557;}
+
+.oysterPage {height: 360px;}
+.container {width: 690px; border-radius: 3px; border: 0px solid #ccc; padding-bottom: 20px;}
+
+.tooltip {text-transform: none; text-align: left;}
+.popover-content {text-transform: none; width: 280px;}
+
+/* Map */
+/*#map-button {margin: 20px 20px 10px;}*/
+/*#map-reset {margin: 0px 20px 10px;}*/
+.map-button { margin: 10px 15px 0 0px;}
+/*#map-modal {min-height: 460px; min-width: 600px;}*/
+.modal-content { width: 680px; height: 500px;}
+/*#map {min-height: 440px; width: 600px; padding: 10px; margin: 5px;}*/
+#map {width: 98%; height: 98%; margin: 5px auto;}
+#map div.instructions {z-index: 99; background: rgba(255,255,255,0.9); width: 266px; padding: 8px; border-radius: 0 0 0 5px; box-shadow: -2px 2px 10px rgba(0,0,0,0.1);
+											position: absolute; right: 0px; top: 0px; border-left: 1px solid #fff; border-bottom: 1px solid #fff;}
+#map div.instructions p {font-size: 14px; line-height: 18px; font-family: Lato; padding-bottom: 10px; border-bottom: 1px dashed #ccc;}
+#map div.instructions h2 {font-size: 18px; line-height: 22px; margin-bottom: 5px; padding: 0;}
+.radio-inline {font-size: 1em; padding-bottom: 5px;}
+
+
+/* Inputs */
+h2#site-name {/*display: inline-block;*/ font-family: Lato; text-transform: none; color: #8dc557; font-weight: 300;
+              /*border-top: 1px solid #ccc; border-bottom: 1px solid #ccc;*/}
+#introtext {padding: 20px 20px 0;}
+
+#intro-paragraph {margin: 10px 5px 5px 0;}
+
+label {font-size: .95em;}
+.input-group {margin-bottom: 10px;}
+.button {margin-bottom: 10px;}
+.input-group-addon {background: rgb(233, 245, 252);}
+.oyster-slider {width: 100%;}
+.oyster-prcnt {margin-top: 10%;}
+.input-group-addon {font-size: .85em; padding: 3px 6px;}
+#oyster-calculator {margin: 20px auto; padding-left: 0;}
+
+
+/* Abundance select */
+select.btn-mini {
+    height: auto;
+    line-height: 14px;
+}
+
+/* this is optional (see below) */
+select.btn {
+    -webkit-appearance: button;
+       -moz-appearance: button;
+            appearance: button;
+    padding-right: 16px;
+}
+
+select.btn-mini + .caret {
+    margin-left: -20px;
+    margin-top: 9px;
+}
+
+/*.nav-tabs {background: #f5f5f5;}*/
+
+#oyster-inputs {border-right: 1px dotted #ccc;}
+#filtration-goals {padding: 0px 10px 5px; background: #f1f1f1; margin-top: 10px; border-radius: 5px;}
+/*#filtration-goals h2 {margin-top: 5px;}*/
+
+
+/* Output Visualization */
+#filtration-outputs p {margin: 0 5px 20px 0px;}
+
+#output-viz {margin-left: 0px;}
+#output-viz-text {padding-top: 40px;}
+#output-viz-text p {margin-bottom: 10px;}
+.viz-label {font-weight: 700; padding-left: 4px;}
+.viz-bay {border-left: 4px solid rgb(218,235,227);}
+.viz-historic {border-left: 4px solid rgb(255,133,80);}
+.viz-current {border-left: 4px solid rgb(169,68,66);}
+.viz-goal {border-left: 4px solid rgb(188, 216, 231);} /* rgb(188, 216, 231)  */
+
+#goal-habitat {padding: 5px 0px; /*background: #f1f1f1; */margin-top: 10px; border-radius: 5px; float: left; border: 1px solid #ccc;}
+#goal-habitat h2 {padding: 0; margin: 0;}
+#goal-habitat h3 {font-weight: 300; font-size: 30px;}
+
+#fish-outputs h2 {padding: 0; margin: 15px 0 5px;}
+#fish-outputs {height: 600px; overflow: scroll;}
+.fish-warning {margin: 10px 10px 10px 0;}
+#fish-outputs img {border: 1px solid #b3b3b3; margin: 10px 0;}
+#results-summary {background:#FFFBCC; float: left; padding: 10px 10px 5px; margin: 10px 0 20px; border-radius: 3px;}
+#results-summary strong {font-size: 1.2em;}
+
+
+
