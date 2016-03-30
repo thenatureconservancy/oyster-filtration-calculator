@@ -11,11 +11,11 @@
     <title>Oyster Filtration Tool</title>
     <link href='http://fonts.googleapis.com/css?family=Lato:300,400, 700|Fjalla+One' rel='stylesheet' type='text/css'>
 <!--     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"> -->
-<!--     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" media="all">
-    <link rel='stylesheet' href='https://api.tiles.mapbox.com/mapbox.js/v2.3.0/mapbox.css' media="all"/> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" media="all">
+    <link rel='stylesheet' href='https://api.tiles.mapbox.com/mapbox.js/v2.3.0/mapbox.css' media="all"/>
 
     <!-- Vendor CSS (bootstrap & mapbox) --> 
-    <link rel='stylesheet' href='css/vendor_bundle.css' media="all"/>    
+<!--     <link rel='stylesheet' href='css/vendor_bundle.css' media="all"/>  -->   
     <link rel="stylesheet" href="css/oyster-app.css" media="all">
   </head>
   <body>
@@ -24,7 +24,7 @@
   <div class="row">
   <script id='template' type='text/ractive'>
     <div class="row">
-      <h1>Oyster Calculator</h1>
+<!--       <h1>Oyster Calculator</h1> -->
       {{#activeSite.name}}<h2 id="site-name">{{activeSite.name}}, {{activeSite.stateabrev}}</h2>{{/activeSite.name}}
     </div> <!-- End row -->
 
@@ -458,13 +458,13 @@
 </div> 
 
 
-    <script src='lib/iframeResizer.contentWindow.min.js'></script>  
-<!--     <script src='https://api.tiles.mapbox.com/mapbox.js/v2.3.0/mapbox.js'></script>
+<!--     <script src='lib/iframeResizer.contentWindow.min.js'></script> -->  
+    <script src='https://api.tiles.mapbox.com/mapbox.js/v2.3.0/mapbox.js'></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <script src='lib/ractive.min.js'></script> -->
+    <script src='lib/ractive.min.js'></script>
     <!-- Loads ractive, bootstrap, jquery, and mapbox -->
-    <script src='lib/vendor_bundle.js'></script>      
+<!--     <script src='lib/vendor_bundle.js'></script>     -->  
     <script type="text/javascript" src="js/config.js"></script> 
     <script type="text/javascript" src="js/oyster-app.js"></script>
   </body>

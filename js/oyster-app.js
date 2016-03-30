@@ -170,7 +170,10 @@ var OysterApp = {
     this.initMap();
     this.loadSite();
     $('#map-modal').on('shown.bs.modal', function () { // chooseLocation is the id of the modal.
-        map.invalidateSize();
+        //map.invalidateSize();
+				setTimeout(function() {
+				    map.invalidateSize();
+				  }, 50);
      });
     $(function () {
       $('[data-toggle="popover"]').popover({

@@ -7,7 +7,7 @@ lime green		#8dc557
 */
 
 /* General properties */
-html, body {height: 100%;}
+html, body {height: 100%; overflow: auto;}
 body {margin:0; padding:0; font-family: Lato, Helvetica, sans-serif; font-weight: normal;}
 h1 {font-family: 'Fjalla One', sans-serif; display: inline; float: left; margin: 10px 100px 0 15px; padding: 0;}
 h2 {font-size: 24px; margin-left: 10px; margin-top: 10px; margin-bottom: 0; font-family: 'Fjalla One',sans-serif;
@@ -19,7 +19,7 @@ a {color: #8dc557;}
 .fa-question-circle:hover {color: #8dc557;}
 
 .oysterPage {height: 360px;}
-.container {width: 690px; border-radius: 3px; border: 0px solid #ccc; padding-bottom: 20px;}
+.container {width: 690px; border-radius: 3px; border: 0px solid #ccc; padding-bottom: 0px;}
 
 .tooltip {text-transform: none; text-align: left;}
 .popover-content {text-transform: none; width: 280px;}
@@ -29,7 +29,7 @@ a {color: #8dc557;}
 /*#map-reset {margin: 0px 20px 10px;}*/
 .map-button { margin: 10px 15px 0 0px;}
 /*#map-modal {min-height: 460px; min-width: 600px;}*/
-.modal-content { width: 680px; height: 500px;}
+.modal-content { width: 670px; height: 500px; overflow: auto;}
 /*#map {min-height: 440px; width: 600px; padding: 10px; margin: 5px;}*/
 #map {width: 98%; height: 98%; margin: 5px auto;}
 #map div.instructions {z-index: 99; background: rgba(255,255,255,0.9); width: 266px; padding: 8px; border-radius: 0 0 0 5px; box-shadow: -2px 2px 10px rgba(0,0,0,0.1);
@@ -41,7 +41,7 @@ a {color: #8dc557;}
 
 /* Inputs */
 h2#site-name {/*display: inline-block;*/ font-family: Lato; text-transform: none; color: #8dc557; font-weight: 300;
-              /*border-top: 1px solid #ccc; border-bottom: 1px solid #ccc;*/}
+              border-top: 1px solid #ccc; border-bottom: 1px solid #ccc;}
 #introtext {padding: 20px 20px 0;}
 
 #intro-paragraph {margin: 10px 5px 5px 0;}
@@ -53,7 +53,7 @@ label {font-size: .95em;}
 .oyster-slider {width: 100%;}
 .oyster-prcnt {margin-top: 10%;}
 .input-group-addon {font-size: .85em; padding: 3px 6px;}
-#oyster-calculator {margin: 20px auto; padding-left: 0;}
+#oyster-calculator {margin: 0 auto; padding-left: 0;}
 
 
 /* Abundance select */
@@ -138,6 +138,18 @@ select.btn-mini + .caret {
 
 .icon-question-circle {color: #C8C8C8; font-size: .8em; margin-bottom: 3px;}
 .icon-question-circle:hover {color: #8dc557;}
+
+
+.modal.fade .modal-dialog {
+  -webkit-transition: -webkit-transform 0.3s ease-out;
+     -moz-transition: -moz-transform 0.3s ease-out;
+       -o-transition: -o-transform 0.3s ease-out;
+          transition: transform 0.3s ease-out;
+}
+
+.modal.in .modal-dialog {
+
+}
 
 
 
