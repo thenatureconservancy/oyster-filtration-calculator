@@ -31,12 +31,13 @@ a {color: #8dc557;}
 /*#map-modal {min-height: 460px; min-width: 600px;}*/
 .modal-content { width: 670px; height: 500px; overflow: auto;}
 /*#map {min-height: 440px; width: 600px; padding: 10px; margin: 5px;}*/
-#map {width: 98%; height: 98%; margin: 5px auto;}
+#map {width: 660px; height: 490px; margin: 5px auto; position: relative;}
 #map div.instructions {z-index: 99; background: rgba(255,255,255,0.9); width: 266px; padding: 8px; border-radius: 0 0 0 5px; box-shadow: -2px 2px 10px rgba(0,0,0,0.1);
 											position: absolute; right: 0px; top: 0px; border-left: 1px solid #fff; border-bottom: 1px solid #fff;}
 #map div.instructions p {font-size: 14px; line-height: 18px; font-family: Lato; padding-bottom: 10px; border-bottom: 1px dashed #ccc;}
 #map div.instructions h2 {font-size: 18px; line-height: 22px; margin-bottom: 5px; padding: 0;}
 .radio-inline {font-size: 1em; padding-bottom: 5px;}
+.leaflet-control {position: absolute; z-index: 999;}
 
 
 /* Inputs */
@@ -149,6 +150,16 @@ select.btn-mini + .caret {
 
 .modal.in .modal-dialog {
 
+}
+
+.modal.in .modal-dialog {
+ -webkit-transform: none;
+ -ms-transform: none; 
+ transform: none;
+}
+
+.modal {
+    position: absolute;
 }
 
 
