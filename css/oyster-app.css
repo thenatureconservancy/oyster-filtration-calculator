@@ -19,7 +19,7 @@ a {color: #8dc557;}
 .fa-question-circle:hover {color: #8dc557;}
 
 .oysterPage {height: 360px;}
-.container {width: 690px; border-radius: 3px; border: 0px solid #ccc; padding-bottom: 0px;}
+.container {max-width: 790px; border-radius: 0px; border: 0px solid #ccc; padding-bottom: 0px;}
 
 .tooltip {text-transform: none; text-align: left;}
 .popover-content {text-transform: none; width: 280px;}
