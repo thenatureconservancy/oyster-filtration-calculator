@@ -166,6 +166,10 @@ var OysterApp = {
     }
   },
 
+  initTour() {
+
+  },
+
   init: function() {
     this.initMap();
     this.loadSite();
@@ -177,7 +181,7 @@ var OysterApp = {
      });
     $(function () {
       $('[data-toggle="popover"]').popover({
-          trigger: "click"
+          trigger: "click hover"
         })
       }
     );
@@ -189,6 +193,9 @@ var OysterApp = {
             }
         });
     });
+
+    $('#intro-modal').modal('show')
+
 
     var MyRactive = Ractive.extend({
       getComputed: function() {
@@ -421,6 +428,8 @@ $('#map-reset').on('click', function(){
   ractive.set('goalData.fish', null);  
 });
 
+  
+
 $('input[name=siteType]').change(function(){
 var value = $( 'input[name=siteType]:checked' ).val();
 ractive.set('siteType', value);
@@ -434,6 +443,7 @@ for (var i = 0; i < inputs.length; i++) {
       }        
     }
 }
+
 
 function isNumeric(n) {
   return !isNaN(parseFloat(n)) && isFinite(n);

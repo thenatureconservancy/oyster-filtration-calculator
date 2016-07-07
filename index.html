@@ -9,10 +9,12 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
     <title>Oyster Filtration Tool</title>
-    <link href='http://fonts.googleapis.com/css?family=Lato:300,400, 700|Fjalla+One' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700|Fjalla+One' rel='stylesheet' type='text/css'>
 <!--     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"> -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" media="all">
     <link rel='stylesheet' href='https://api.tiles.mapbox.com/mapbox.js/v2.3.0/mapbox.css' media="all"/>
+<!--     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tour/0.10.3/css/bootstrap-tour.min.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.2.0/introjs.min.css">
 
     <!-- Vendor CSS (bootstrap & mapbox) --> 
 <!--     <link rel='stylesheet' href='css/vendor_bundle.css' media="all"/>  -->   
@@ -42,7 +44,6 @@
           <div id="bay-properties" class="row">
             <h2>Bay Properties 
               <i class="icon-question-circle"
-
               data-toggle="popover"
               tabindex="0"
               data-trigger="focus"
@@ -458,11 +459,35 @@
 </div> 
 
 
+<div id="intro-modal" class="modal" tabindex="-1" role="dialog" data-show="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="intro-instructions">
+          <h2>Oyster Calculator Instructions</h2>
+          <p>Welcome to The Nature Conservancy’s Oyster Calculator. This calculator uses two key ecosystem services &mdash; water filtration and fish production &mdash; to provide insight into how ecosystem services can be used to set restoration objectives, in order to answer a critical question of <em>"How much shellfish restoration is enough?"</em></p>
+
+          <p>This calculator accompanies <em>Setting Objectives for Oyster Habitat Restoration Using Ecosystem Services, A Manager’s Guide</em>, which can be downloaded directly below the calculator.  The Manager’s Guide provides the explanation of the science, provides examples as well as descriptions of caveats, and assumptions that users should be aware of before using this calculator. <strong>Please be sure to download and read the guide when using the calculator!</strong></p>
+
+          <p>For more information on each of the required inputs, click or hover over the <i class="icon-question-circle"></i> next to each section. <strong></p>
+
+          <p>Note:</strong> you can (and should!) change the value of any of these data input boxes.  Even if a value has already been provided, you can change it to customize your outputs.</p>
+        </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>   
+    </div>
+  </div>
+</div>
+
+
+
 <!--     <script src='lib/iframeResizer.contentWindow.min.js'></script> -->  
     <script src='https://api.tiles.mapbox.com/mapbox.js/v2.3.0/mapbox.js'></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src='lib/ractive.min.js'></script>
+<!--     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tour/0.10.3/js/bootstrap-tour.min.js"></script> -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.2.0/intro.min.js"></script>
     <!-- Loads ractive, bootstrap, jquery, and mapbox -->
 <!--     <script src='lib/vendor_bundle.js'></script>     -->  
     <script type="text/javascript" src="js/config.js"></script> 
