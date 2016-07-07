@@ -108,6 +108,7 @@ select.btn-mini + .caret {
 #fish-outputs img {border: 1px solid #b3b3b3; margin: 10px 0;}
 #results-summary {background:#FFFBCC; float: left; padding: 10px 10px 5px; margin: 10px 0 20px; border-radius: 3px;}
 #results-summary strong {font-size: 1.2em;}
+.highlight {background:#FFFBCC; float: left; padding: 10px 10px 5px;}
 
 .introjs-helperNumberLayer {display: none;}
 

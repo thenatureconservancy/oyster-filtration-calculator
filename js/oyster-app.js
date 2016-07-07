@@ -166,10 +166,6 @@ var OysterApp = {
     }
   },
 
-  initTour() {
-
-  },
-
   init: function() {
     this.initMap();
     this.loadSite();
@@ -435,14 +431,14 @@ var value = $( 'input[name=siteType]:checked' ).val();
 ractive.set('siteType', value);
 });
 
-var inputs = document.getElementsByTagName('input');
-for (var i = 0; i < inputs.length; i++) {
-    inputs[i].oninput = function () {
-      if (isNumeric(this.value) !== true) {
-        this.value = 0;
-      }        
-    }
-}
+// var inputs = document.getElementsByTagName('input');
+// for (var i = 0; i < inputs.length; i++) {
+//     inputs[i].oninput = function () {
+//       if (isNumeric(this.value) !== true) {
+//         this.value = 0;
+//       }        
+//     }
+// }
 
 
 function isNumeric(n) {
