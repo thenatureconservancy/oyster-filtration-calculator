@@ -1,0 +1,34 @@
+coast,type,species,commonName,juvMeanM2,juvStDevM2,juvMeanHa,juvMeanAcre,juvStDevAcre,rYears,meanNumIndR,indMeanAcreAgeR,meanProductionGM2,stDevProductionGM2,meanProductionKgHa,meanProductionKgAcre,stDevProductionKgAcre,abundanceWeight
+Atlantic,crustacean,azteceus,Brown Shrimp,0.034,0.008,340,138,NA,NA,NA,NA,0.2,0.1,2,NA,NA,1
+Atlantic,fish,Mycteroptera microlepis,Gag,0.014,0.009,140,57,NA,NA,NA,NA,23.3,15,233,NA,NA,1
+Atlantic,fish,Lutjanus griseus,Gray Snapper,0.01,0.007,100,40,NA,NA,NA,NA,5.6,3.9,56,NA,NA,1
+Atlantic,fish,Gobiosoma bosc,Naked Goby,24.863,6.877,248630,100619,NA,NA,NA,NA,28,7.7,280,NA,NA,1
+Atlantic,fish,Orthopristis chrysoptera,Pigfish,0.026,0.027,260,105,NA,NA,NA,NA,3.5,3.6,35,NA,NA,1
+Atlantic,fish,Lagodon rhomboides,Pinfish,0.009,0.224,90,36,NA,NA,NA,NA,0.7,18.3,7,NA,NA,1
+Atlantic,fish,Archosargus probatocephalus,Sheepshead,0.072,0.048,720,291,NA,NA,NA,NA,62.18,41.4,621.8,NA,NA,1
+Atlantic,fish,Gobiesox strumosus,Skilletfish,6.837,2.184,68370,27669,NA,NA,NA,NA,22.2,7.1,222,NA,NA,1
+Atlantic,fish,Paralichthys lethostigma,Southern Flounder,0.001,0.008,10,5,NA,NA,NA,NA,0.6,3.7,6,NA,NA,1
+Atlantic,fish,Chasmodes bosquianus,Striped Blenny,5.824,1.431,58240,23568,NA,NA,NA,NA,19.4,4.7,194,NA,NA,1
+Atlantic,fish,Fundulus majalis,Striped Killifish,0.015,0.019,150,62,NA,NA,NA,NA,0.06,0.07,0.6,NA,NA,1
+Atlantic,fish,Opsanus tau,Toadfish,1.187,0.4,11870,4809,NA,NA,NA,NA,117.63,28.05458964,1176.3,NA,NA,1
+,,,,,,,,,,,,,,,,,
+coast,type,species,commonName,juvMeanM2,juvStDevM2,juvMeanHa,juvMeanAcre,juvStDevAcre,rYears,meanNumIndR,indMeanAcreAgeR,meanProductionGM2,stDevProductionGM2,meanProductionKgHa,meanProductionKgAcre,stDevProductionKgAcre,abundanceWeight
+Gulf of Mexico,crustacean,Callinectes sapidus,Blue Crab,1.317,0.827,13170,NA,NA,NA,NA,NA,143.86,64.16922939,1438.6,NA,NA,1
+Gulf of Mexico,crustacean,Farfantepenaeus aztecus,Brown Shrimp,1.036,0.627,10360,NA,NA,NA,NA,NA,,,,NA,NA,1
+Gulf of Mexico,fish,Ctenogobius boleosoma,Darter Goby,0.234,0.169,2340,NA,NA,NA,NA,NA,,,,NA,NA,1
+Gulf of Mexico,fish,Hypsoblennius hentz,Feather Blenny,0.074,0.02,740,NA,NA,NA,NA,NA,,,,NA,NA,1
+Gulf of Mexico,fish,Hypsoblennius ionthas,Freckled Blenny,0.392,0.269,3920,NA,NA,NA,NA,NA,,,,NA,NA,1
+Gulf of Mexico,fish,Bathygobius soporator,Frillfin Goby,0.024,0.009,240,NA,NA,NA,NA,NA,,,,NA,NA,1
+Gulf of Mexico,fish,Gobiosoma bosc,Naked Goby,1.92,0.488,19200,NA,NA,NA,NA,NA,,,,NA,NA,1
+Gulf of Mexico,fish,Orthopristis chrysoptera,Pigfish,0.044,0.018,440,NA,NA,NA,NA,NA,,,,NA,NA,1
+Gulf of Mexico,fish,Lagodon rhomboides,Pinfish,0.415,0.209,4150,NA,NA,NA,NA,NA,,,,NA,NA,1
+Gulf of Mexico,fish,Prionotus spp.,Sea Robin,0.012,0.015,120,NA,NA,NA,NA,NA,,,,NA,NA,1
+Gulf of Mexico,fish,Archosargus probatocephalus,Sheepshead,0.139,0.101,1390,NA,NA,NA,NA,NA,137.2,99.03764059,1372,NA,NA,1
+Gulf of Mexico,fish,Bairdiella chrysoura,Silver Perch,0.501,0.481,5010,NA,NA,NA,NA,NA,,,,NA,NA,1
+Gulf of Mexico,fish,Gobiesox strumosus,Skilletfish,0.959,0.42,9590,NA,NA,NA,NA,NA,,,,NA,NA,1
+Gulf of Mexico,fish,Chaetodipterus faber,Spadefish,0.006,0.004,60,NA,NA,NA,NA,NA,,,,NA,NA,1
+Gulf of Mexico,fish,Leiostomus xanthurus,Spot,0.342,0.167,3420,NA,NA,NA,NA,NA,,,,NA,NA,1
+Gulf of Mexico,crustacean,Menippe mercenaria,Stone Crab,1.936,0.214,19360,NA,NA,NA,NA,NA,,,,NA,NA,1
+Gulf of Mexico,fish,Chasmodes bosquianus,Striped Blenny,0.076,0.039,760,NA,NA,NA,NA,NA,,,,NA,NA,1
+Gulf of Mexico,fish,Opsanus beta,Toadfish,1.325,0.527,13250,NA,NA,NA,NA,NA,,,,NA,NA,1
+Gulf of Mexico,crustacean,Litopanaeus setiferus,White Shrimp,4.64,2.726,46400,NA,NA,NA,NA,NA,,,,NA,NA,1
