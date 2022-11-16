@@ -15,11 +15,11 @@ body {
 body {
   margin: 0;
   padding: 0;
-  font-family: Lato, Helvetica, sans-serif;
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
   font-weight: normal;
 }
 h1 {
-  font-family: 'Fjalla One', sans-serif;
+  font-family: 'Open Sans', 'Fjalla One', sans-serif;
   display: inline;
   float: left;
   margin: 10px 100px 0 15px;
@@ -30,7 +30,9 @@ h2 {
   margin-left: 10px;
   margin-top: 10px;
   margin-bottom: 0;
-  font-family: 'Fjalla One', sans-serif;
+  font-family: 'Open Sans Condensed', 'Fjalla One', sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
   color: rgb(20, 49, 84);
 
   padding: 5px;
@@ -42,7 +44,9 @@ h2.panel-title {
   margin-left: 0;
   margin-top: 0;
   margin-bottom: 0;
-  font-family: 'Fjalla One', sans-serif;
+  font-family: 'Open Sans Condensed', 'Fjalla One', sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
   color: rgb(20, 49, 84);
 
   padding: 0px;
@@ -123,7 +127,7 @@ a {
 #map div.instructions p {
   font-size: 14px;
   line-height: 18px;
-  font-family: Lato;
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
   padding-bottom: 10px;
   border-bottom: 1px dashed #ccc;
 }
@@ -153,7 +157,7 @@ div.intro-instructions .icon-question-circle {
 /* Inputs */
 h2#site-name {
   /*display: inline-block;*/
-  font-family: Lato;
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
   text-transform: none;
   color: #8dc557;
   font-weight: 300;
