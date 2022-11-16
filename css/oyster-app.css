@@ -221,7 +221,7 @@ select.btn-mini + .caret {
 /*.nav-tabs {background: #f5f5f5;}*/
 
 #oyster-inputs {
-  border-right: 1px dotted #ccc;
+  border-right: 0px dotted #ccc;
 }
 /* #filtration-goals {
   padding: 0px 10px 5px;
