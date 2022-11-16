@@ -237,13 +237,9 @@
               </p>              
             </div>
 
-          <ul class="nav nav-tabs">
-            <!-- <li>Explore Restoration Benefits</li> -->
-            <li class="active"><a data-toggle="tab" href="#filtration-outputs">Filtration</a></li>
-            <li><a data-toggle="tab" href="#fish-outputs">Fish Production</a></li>       
-          </ul>
 
-          <div class="tab-content">
+
+
             <div id="filtration-outputs" class="tab-pane active">
               <div id="outputs" class="row">
 
@@ -341,81 +337,8 @@
                 <p class="hide">{{currentFiltration}}</p>
             </div>
 
-            <div id="fish-outputs" class="tab-pane">
-            <h2>Fish Benefits
-              <i class="icon-question-circle"
-                  data-toggle="popover" 
-                  data-placement="auto"
-                  data-html="true"
-                  data-trigger="focus"  
-                  data-content="
-                  <p>Fish production data are from <a href='docs/zuErmgassen.2015.QuantifyingFishProduction.pdf' target='_blank'>zu Ermgassen et al. 2015</a>. Estimates are regional estimates of production, and thus do not account for variability that is inherent within individual sites.  However, estimates of production can be improved for a particular bay or estuary by using the Est. Site Abundance feature to adjust for relative abundance for your particular bay/estuary.  Estimates are only available for the Northern Gulf of Mexico and part of the Atlantic coasts (Floridian, Carolinian and Virginian ecoregions).</p> 
-                  <p><strong>Est. Site Abundance:</strong> Select the estimated site abundance (ind./ha) for the bay or estuary you are calculating for. Default is mean abundance for either the Gulf of Mexico or Atlantic coast (where applicable). High abundance is mean +1 SD. If species is not present, or occurs in low abundance, select ‘None’. </p> 
-                  <p><strong># New Individuals:</strong>  Calculated by multiplying site abundance by acres of restored habitat required
-                  to meet filtration goal.</p>
-                  <p><strong>New Biomass: </strong> The per species biomass, per year. Calculated by multiplying site abundance by acres of restored habitat required to meet filtration goal by biomass for each species per ha.</p>"              
-                ></i>
-            </h2>
-              {{#if goalData.fish}}
-                <table class="table table-hover table-condensed">
-                  <thead>
-                    <tr>
-                      <th>Species</th>
-                      <th>Est. Site Abundance</th>
-                      <th># New Indiv</th> 
-                      <th>New Biomass (kg)</th> 
-                    </tr>
-                  </thead>
-                           
-                  <tbody>
-                    {{#goalData.fish:i}}
-                      <tr>
-                        <td title="{{species}}">{{commonName}}</td>
-
-                        <td>                        
-                          <input id="filtrationGoal" class="slider-fish" type="range" min="0" max="2" step="1" value="{{abundanceWeight}}" list="fishSettings" /> 
-                          <datalist id="fishSettings">
-                            <option>0</option>
-                            <option>1</option>
-                            <option>2</option>
-                          </datalist>
-                          <span class="small">
-                            {{#if abundanceWeight === 0}}None: 0/ha
-                              {{elseif abundanceWeight === 1}}Avg: {{Math.round(juvMeanHa)}}/ha
-                              {{elseif abundanceWeight === 2}}High: {{Math.round(juvMeanHa+(juvStDevAcre/0.404686))}}/ha
-                            {{/if}}
-                          </span>                                                             
-                        </td>
-
-                        <td>
-                          {{#if abundanceWeight === 0}} 0
-                            {{elseif abundanceWeight === 1}} {{format( (juvMeanHa * goalData.goalfiltration)/(10000*((goalData.goalmarketdensity * goalData.goalmarketoneoysterrate)+(goalData.goalculldensity * goalData.goalculloneoysterrate))))}}
-                            {{elseif abundanceWeight === 2}} {{format( ((juvMeanHa + (juvStDevAcre/0.404686)) * goalData.goalfiltration)/(10000*((goalData.goalmarketdensity * goalData.goalmarketoneoysterrate)+(goalData.goalculldensity * goalData.goalculloneoysterrate))))}}
-                          {{/if}}                          
-                        </td>
 
 
-                        <td>
-                          {{#if abundanceWeight === 0}} 0
-                            {{elseif abundanceWeight === 1}} {{format( (meanProductionKgHa * goalData.goalfiltration)/(10000*((goalData.goalmarketdensity * goalData.goalmarketoneoysterrate)+(goalData.goalculldensity * goalData.goalculloneoysterrate))))}}
-                            {{elseif abundanceWeight === 2}} {{format( ((meanProductionKgHa + (stDevProductionKgAcre/0.404686))* goalData.goalfiltration)/(10000*((goalData.goalmarketdensity * goalData.goalmarketoneoysterrate)+(goalData.goalculldensity * goalData.goalculloneoysterrate))))}}
-                          {{/if}}
-
-                        
-                        </td>
-                      </tr> 
-
-                    {{/goalData.fish}}                  
-                  </tbody>
-                </table>
-
-              {{else}}
-                <p class="fish-warning">Fish production data are only available for the Northern Gulf of Mexico, Floridian, Carolinian , and Virginian ecoregions.</p>
-                <img src="ecoregions300c.jpg" class="img-responsive"/>
-              {{/if}}
-
-            </div> <!-- End fish-outputs -->
-          </div>
 
           </div> <!-- End col-xs-12 -->
         </div> <!-- End row -->
