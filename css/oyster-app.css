@@ -378,3 +378,6 @@ select.btn-mini + .caret {
 /* .panel-default {
   border: 0px;
 } */
+.panel-default > .panel-heading {
+  background: #e7f1eb;
+}
