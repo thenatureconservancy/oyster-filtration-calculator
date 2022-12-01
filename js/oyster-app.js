@@ -331,11 +331,11 @@ var OysterApp = {
           if (num > 1000000000) return (num / 1000000000).toFixed(1) + ' B';
           if (num > 1000000) return (num / 1000000).toFixed(1) + ' M';
           //if ( num > 1000 ) return ( Math.floor( num / 1000 ) ) + ',' + ( num % 1000 ).toFixed(1);
-          //if ( num > 1000 ) return (formatThousands(num));
+          if (num > 1000) return formatThousands(num);
           if (num < 0) return 0;
           if (isNaN(num) === true) return 0;
           // if (isNan(num) === false) return 999;
-          return num.toFixed(0);
+          return num.toFixed(1);
         },
       },
       computed: {
